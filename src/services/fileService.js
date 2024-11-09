@@ -25,23 +25,7 @@ export const readFile = async () => {
         const data = await fs.readFile(dataFilePath, 'utf8');
         return JSON.parse(data);
     } catch (error) {
-        throw new Error(`No pudimos leer el archivo: ${error}`)
+        console.error(`No pudimos leer el archivo: ${error}`)
+        return null  
     }
-}
-
-
-
-export const createData = async(data) => {
-    const datafile = await readFile();
-    const dataJson = [ ...datafile, data]
-    await createFile(dataJson)
-    
-}
-
-
-
-
-export const getAllData = async() => {
-    const data = await readFile()
-    return data
 }
