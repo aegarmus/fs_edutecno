@@ -1,4 +1,4 @@
-import { createData, getAllData } from "../utils/fileUtils.js";
+import { createData, getAllData, updateData } from "../utils/fileUtils.js";
 
 
 export const createItem = async(req, res) => {
@@ -33,6 +33,30 @@ export const getAllItems = async(req, res) => {
         res.status(404).json({
             message: 'Data not Found',
             status: 404,
+            error
+        })
+    }
+}
+
+
+export const updateItems = async(req, res) => {
+    try {
+        const id  = Number(req.params.id);
+        const newData = req.body;
+
+        const modifiedOldData = updateData(id, newData)
+
+        res.status(202).json({
+            message: 'Update data succesfully',
+            status: 202,
+            oldData : modifiedOldData,
+            newData
+        })
+        
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error at update data',
+            status: 500,
             error
         })
     }
