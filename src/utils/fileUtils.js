@@ -24,6 +24,26 @@ export const getAllData = async () => {
   return data;
 };
 
+export const getById = async (id) => {
+  const data = await readFile();
+  const usuario = data.find(usuario => usuario.id === id)
+
+  return usuario
+}
+
+export const getByName = async (name) => {
+    const data = await readFile();
+
+    const nameNormalized = name.toLocaleLowerCase().replace(/\s+/g, '')
+
+    const usuario = data.filter(
+      (usuario) =>
+        usuario.nombre.toLocaleLowerCase().replace(/\s+/g, '') === nameNormalized
+    );
+
+    return usuario
+}
+
 
 export const updateData = async(id, newData) => {
     const data = await readFile();
