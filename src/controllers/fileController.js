@@ -1,4 +1,4 @@
-import { createData, getAllData, updateData } from "../utils/fileUtils.js";
+import { createData, deleteData, getAllData, updateData } from "../utils/fileUtils.js";
 
 
 export const createItem = async(req, res) => {
@@ -44,7 +44,7 @@ export const updateItems = async(req, res) => {
         const id  = Number(req.params.id);
         const newData = req.body;
 
-        const modifiedOldData = updateData(id, newData)
+        const modifiedOldData = await updateData(id, newData)
 
         res.status(202).json({
             message: 'Update data succesfully',
@@ -56,6 +56,24 @@ export const updateItems = async(req, res) => {
     } catch (error) {
         res.status(500).json({
             message: 'Error at update data',
+            status: 500,
+            error
+        })
+    }
+}
+
+export const deleteItem = async(req, res) => {
+    try {
+        const id = Number(req.params.id);
+        await deleteData(id)
+
+        res.status(202).json({
+            message: 'Delete content successfully',
+            status: 202
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'We cannot delete content',
             status: 500,
             error
         })

@@ -11,7 +11,7 @@ export const createFile = async(data) => {
     try {
         await fs.mkdir(path.dirname(dataFilePath), { recursive: true })
 
-        await fs.writeFile(dataFilePath, JSON.stringify(data), 'utf-8', (err) => {
+        await fs.writeFile(dataFilePath, JSON.stringify(data, null, 4), 'utf-8', (err) => {
             throw new Error(`Error al crear el archivo: ${err}`)
         });
     } catch (error) {

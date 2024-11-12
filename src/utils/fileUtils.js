@@ -40,3 +40,10 @@ export const updateData = async(id, newData) => {
     return oldData
 
 }
+
+
+export const deleteData = async(id) => {
+  const data = await readFile();
+  const newData = data.filter(usuario => usuario.id !== id);
+  await createFile(newData)
+}

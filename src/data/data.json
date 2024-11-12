@@ -1,1 +1,23 @@
-[{"id":1,"nombre":"Alan","apellido":"García","edad":31,"ocupación":"Docente"}]
+[
+    {
+        "id": 2,
+        "nombre": "Papapleto",
+        "apellido": "Guajardo",
+        "edad": 25,
+        "ocupación": "Tech Lead"
+    },
+    {
+        "id": 3,
+        "nombre": "El chuña",
+        "apellido": "Cordovez",
+        "edad": 25,
+        "ocupación": "Product Manager"
+    },
+    {
+        "id": 4,
+        "nombre": "El Chipamogli",
+        "apellido": "Atauraga",
+        "edad": 25,
+        "ocupación": "Jefe supremo"
+    }
+]
